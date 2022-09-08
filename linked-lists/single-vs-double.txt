@@ -1,0 +1,29 @@
+Singly
+=====
+Pros:
+- Simple
+- Requires Less memory
+- Delete and Insert is faster than Doubly
+Cons:
+- It can't be traversed backwards
+- If we ever lose the reference to this.head, the list can be lost in memory forever.
+
+Good to use:
+- When you have less memory, or memory is expensive
+- Your main goal is you want to do fast insertion or deletion
+  - Especially when you have insertion at the front / back of list
+- You don't need to do much searching
+
+Doubly
+=====
+Pros:
+- Can be traversed from front or back
+  - If you need to delete / insert something close to the end, you can start from the back and traverse inwards.  Singly you have to start at the head.
+
+Cons:
+- More complex
+- Requires more memory because of extra propery "prev"
+
+Good to use:
+- When you don't have much limitations on memory
+- Good operation for searching for elements, ex searching backwards
