@@ -22,8 +22,12 @@ Pros:
 
 Cons:
 - More complex
-- Requires more memory because of extra propery "prev"
+- Requires more memory because of extra property "prev"
 
 Good to use:
 - When you don't have much limitations on memory
 - Good operation for searching for elements, ex searching backwards
+
+=====
+You've usually be asked about singly.
+Popular question: Reverse a singly linked list.
