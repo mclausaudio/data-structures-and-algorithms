@@ -74,6 +74,26 @@ class LinkedList {
     return this.printList();
   }
 
+  reverse() {
+    // Do some checks on the list
+    if (!this.head.next) {
+      return this.head;
+    }
+    this.tail = this.head
+    let first = this.head;
+    let second = this.head.next;
+    while (second) {
+      let temp = second.next;
+      second.next = first;
+      first = second;
+      second = temp;
+    }
+    this.head.next = null;
+    this.head = first;
+
+    return this.printList();
+  }
+
   // Utils
   printList() {
     const array = [];
@@ -119,9 +139,17 @@ myLinkedList.remove(0)
 // [ 10, 99, 5, 16, 8 ]
 myLinkedList.remove(10000) 
 // [ 10, 99, 5, 16 ]
-myLinkedList.remove(1) 
+myLinkedList.remove(1)
 // [ 10, 5, 16 ]
+myLinkedList.append(22);
+// [ 10, 5, 16, 22 ]
+myLinkedList.reverse();
+// [ 22, 16, 5, 10 ]
 console.log( myLinkedList.printList() );
 
-console.log( JSON.stringify(myLinkedList) )
-// {"head":{"value":10,"next":{"value":5,"next":{"value":16,"next":null}}},"tail":{"value":16,"next":null},"length":4}
+console.log(myLinkedList)
+// LinkedList {
+//   head: Node { value: 22, next: Node { value: 16, next: [Node] } },
+//   tail: { value: 10, next: null },
+//   length: 5
+// }
