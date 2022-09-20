@@ -16,28 +16,28 @@ class Stack {
     return this.first;
   }
 
-  push(value) {
+  enqueue(value) {
     const newNode = new Node(value);
     if (this.isEmpty()) {
       this.first = newNode;
-      this.bottom = newNode;
+      this.last = newNode;
     } else {
-      newNode.next = this.first;
-      this.first = newNode
+      this.last.next = newNode;
+      this.last = newNode;
     }
     this.length++;
     return this;
   }
 
-  pop() {
+  dequeue() {
     if (this.isEmpty()) {
       return null;
     }
-    if (this.first === this.bottom) {
+    if (this.first === this.last) {
       // Basically if there is only one node left that we are removing
-      this.bottom = null;
-      // Gotta set the bottom to null.  Because the code below doesn't handle that.
-      // or else you'll have a first = null, and a bottom = some node.
+      this.last = null;
+      // Gotta set the last to null.  Because the code below doesn't handle that.
+      // or else you'll have a first = null, and a last = some node.
     }
     this.first = this.first.next;
     this.length--;
@@ -54,13 +54,20 @@ class Stack {
 }
 
 const myStack = new Stack();
-// Mimic a browsers history
-myStack.push('Udemy');
-myStack.push('Google');
-myStack.push('StackOverflow');
-console.log(myStack);
+// Mimic a wait list
+myStack.enqueue('Renee');
+console.log('enqueue Renee : ', myStack);
+myStack.enqueue('Yuki');
+console.log('enqueue Yuki : ', myStack);
+myStack.enqueue('Shurik');
+console.log('enqueue Shurik : ', myStack);
 
 console.log('PEEKING ::: ', myStack.peek());
 
-myStack.pop();
-console.log('AFTER POP ::: ', myStack);
+myStack.dequeue(); // take off first item.  In this waitlist example, means the first person in line has been helped.
+console.log('AFTER dequeue first item ::: ', myStack);
+myStack.dequeue(); 
+console.log('AFTER 2nd dequeue ::: ', myStack);
+myStack.dequeue(); 
+console.log('AFTER 3nd dequeue ::: ', myStack);
+// AFTER 3nd dequeue :::  Stack { first: null, last: null, length: 0 }
